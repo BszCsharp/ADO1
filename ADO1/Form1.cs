@@ -81,17 +81,15 @@ namespace ADO1
             }
             else
             {
-                a.ArtikelNr = Convert.ToInt32(reader[i++].ToString());
+                a.ArtikelNr = Convert.ToInt32( reader[i++].ToString());
             }
-            if (reader[i] != DBNull.Value)
-            {
-                a.ArtielGruppe = Convert.ToInt32(reader[i++]);
-            }
+            
+            a.ArtielGruppe = Convert.ToInt32(convert( reader[i++]));
+           
             a.Bezeichnung = reader[i++].ToString();
-            if (reader[i] != DBNull.Value)
-            {
-                a.Bestand = Convert.ToByte(reader[i++]);
-            }
+
+            a.Bestand = Convert.ToUInt16(convert(reader[i++]));
+           
             if (reader[i] != DBNull.Value)
             {
                 a.Meldebestand = Convert.ToInt16(reader[i++]);
@@ -112,6 +110,11 @@ namespace ADO1
 
             return a;
 
+        }
+        private Object convert(Object o)
+        {
+            if (o == DBNull.Value) return null;
+            else return o;
         }
     }
 }
