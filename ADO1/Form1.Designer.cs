@@ -32,6 +32,8 @@
             this.buttonCommand = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
             this.listBoxAusgabe = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxArtGruppe = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonConnection
@@ -47,9 +49,9 @@
             // buttonCommand
             // 
             this.buttonCommand.Enabled = false;
-            this.buttonCommand.Location = new System.Drawing.Point(60, 85);
+            this.buttonCommand.Location = new System.Drawing.Point(65, 84);
             this.buttonCommand.Name = "buttonCommand";
-            this.buttonCommand.Size = new System.Drawing.Size(149, 37);
+            this.buttonCommand.Size = new System.Drawing.Size(144, 37);
             this.buttonCommand.TabIndex = 1;
             this.buttonCommand.Text = "Kommando";
             this.buttonCommand.UseVisualStyleBackColor = true;
@@ -74,11 +76,30 @@
             this.listBoxAusgabe.Size = new System.Drawing.Size(331, 147);
             this.listBoxAusgabe.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(224, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Artikelgruppe";
+            // 
+            // textBoxArtGruppe
+            // 
+            this.textBoxArtGruppe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxArtGruppe.Location = new System.Drawing.Point(301, 88);
+            this.textBoxArtGruppe.Name = "textBoxArtGruppe";
+            this.textBoxArtGruppe.Size = new System.Drawing.Size(149, 26);
+            this.textBoxArtGruppe.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 403);
+            this.Controls.Add(this.textBoxArtGruppe);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAusgabe);
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.buttonCommand);
@@ -86,6 +107,7 @@
             this.Name = "Form1";
             this.Text = "ADO-Beispiel 1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -95,6 +117,8 @@
         private System.Windows.Forms.Button buttonCommand;
         private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.ListBox listBoxAusgabe;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxArtGruppe;
     }
 }
 

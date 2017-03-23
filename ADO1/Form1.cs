@@ -23,14 +23,19 @@ namespace ADO1
 
         private void buttonConnection_Click(object sender, EventArgs e)
         {
-            OleDbConnectionStringBuilder bldr = new OleDbConnectionStringBuilder();
-            bldr.Provider = "Microsoft.ACE.OLEDB.12.0";
-            bldr.DataSource = "Bestellung.accdb"; 
-            con = new OleDbConnection(bldr.ConnectionString);
+            //OleDbConnectionStringBuilder bldr = new OleDbConnectionStringBuilder();
+            //bldr.Provider = "Microsoft.ACE.OLEDB.12.0";
+            //bldr.DataSource = "Bestellung.accdb";
+            con = new OleDbConnection(Properties.Settings.Default.DBCon);
             try
             {
                 con.Open();
                 buttonCommand.Enabled = true;
+                cmd = con.CreateCommand();
+                cmd.Parameters.Add("AGR", OleDbType.Integer);
+                String artgr = textBoxArtGruppe.Text;
+                cmd.CommandText = "Select * from tArtikel Where ArtikelGruppe = AGR";
+                cmd.CommandType = CommandType.Text;
             }
             catch (OleDbException ex)
             {
@@ -40,11 +45,10 @@ namespace ADO1
 
         private void buttonCommand_Click(object sender, EventArgs e)
         {
-            cmd = con.CreateCommand();
-            cmd.CommandText = "tArtikel";
-            cmd.CommandType = CommandType.TableDirect;
+            
             try
             {
+                cmd.Parameters["AGR"].Value = textBoxArtGruppe.Text;
                 reader = cmd.ExecuteReader();
                 buttonRead.Enabled = true;
             }
@@ -56,11 +60,13 @@ namespace ADO1
 
         private void buttonRead_Click(object sender, EventArgs e)
         {
+            listBoxAusgabe.Items.Clear();
             while(reader.Read())
             {
                 String zeile = reader["ArtikelOID"].ToString() + ": " + reader["Bezeichnung"];
                 listBoxAusgabe.Items.Add(zeile);
             }
+            reader.Close();
         }
     }
 }
