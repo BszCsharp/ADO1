@@ -63,10 +63,55 @@ namespace ADO1
             listBoxAusgabe.Items.Clear();
             while(reader.Read())
             {
-                String zeile = reader["ArtikelOID"].ToString() + ": " + reader["Bezeichnung"];
-                listBoxAusgabe.Items.Add(zeile);
+                //Artikel a = mkArtikelObject(reader);
+                listBoxAusgabe.Items.Add(mkArtikelObject(reader));
             }
             reader.Close();
+        }
+
+        private Artikel mkArtikelObject(OleDbDataReader reader)
+        {
+            Artikel a = new Artikel();
+            // weiterer Code
+            int i = 0;
+            a.ArtikelOid =  Convert.ToInt32( reader[i++]);
+            if(reader[i] == DBNull.Value)
+            {
+                a.ArtikelNr = 0;
+            }
+            else
+            {
+                a.ArtikelNr = Convert.ToInt32(reader[i++].ToString());
+            }
+            if (reader[i] != DBNull.Value)
+            {
+                a.ArtielGruppe = Convert.ToInt32(reader[i++]);
+            }
+            a.Bezeichnung = reader[i++].ToString();
+            if (reader[i] != DBNull.Value)
+            {
+                a.Bestand = Convert.ToByte(reader[i++]);
+            }
+            if (reader[i] != DBNull.Value)
+            {
+                a.Meldebestand = Convert.ToInt16(reader[i++]);
+            }
+            if (reader[i] != DBNull.Value)
+            {
+                a.Verpackung = Convert.ToInt16(reader[i++]);
+            }
+            if (reader[i] != DBNull.Value)
+            {
+                a.VkPreis = Convert.ToDecimal(reader[i++]);
+            }
+            if (reader[i] != DBNull.Value)
+            {
+                a.LetzteEntnahme = Convert.ToDateTime(reader[i++]);
+            }
+           
+
+            return a;
+
         }
     }
 }
