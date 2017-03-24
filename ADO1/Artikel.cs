@@ -9,7 +9,7 @@ namespace ADO1
     class Artikel
     {
         public int ArtikelOid {get;set;}
-        public int ArtikelNr { get; set; }
+        public String ArtikelNr { get; set; }
         public int ArtielGruppe { get; set; }
         public String Bezeichnung { get; set; }
         public Int32 Bestand { get; set; }

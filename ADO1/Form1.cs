@@ -75,8 +75,8 @@ namespace ADO1
             // weiterer Code
             int i = 0;
             a.ArtikelOid =  Convert.ToInt32( reader[i++]);
-            
-            a.ArtikelNr = Convert.ToInt32(convert( reader[i++]));
+
+            a.ArtikelNr = Convert.ToString(convert( reader[i++]));
             
             
             a.ArtielGruppe = Convert.ToInt32(convert( reader[i++]));
@@ -103,7 +103,7 @@ namespace ADO1
         }
         private Object convert(Object o)
         {
-            if (o == DBNull.Value) return null;
+            if (o.Equals(DBNull.Value)) return null;
             else return o;
         }
     }
