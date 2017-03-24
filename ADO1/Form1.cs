@@ -75,37 +75,27 @@ namespace ADO1
             // weiterer Code
             int i = 0;
             a.ArtikelOid =  Convert.ToInt32( reader[i++]);
-            if(reader[i] == DBNull.Value)
-            {
-                a.ArtikelNr = 0;
-            }
-            else
-            {
-                a.ArtikelNr = Convert.ToInt32( reader[i++].ToString());
-            }
+            
+            a.ArtikelNr = Convert.ToInt32(convert( reader[i++]));
+            
             
             a.ArtielGruppe = Convert.ToInt32(convert( reader[i++]));
            
-            a.Bezeichnung = reader[i++].ToString();
+            a.Bezeichnung = Convert.ToString(convert(reader[i++]));
 
-            a.Bestand = Convert.ToUInt16(convert(reader[i++]));
+            a.Bestand = Convert.ToInt32(convert(reader[i++]));
            
-            if (reader[i] != DBNull.Value)
-            {
-                a.Meldebestand = Convert.ToInt16(reader[i++]);
-            }
-            if (reader[i] != DBNull.Value)
-            {
-                a.Verpackung = Convert.ToInt16(reader[i++]);
-            }
-            if (reader[i] != DBNull.Value)
-            {
-                a.VkPreis = Convert.ToDecimal(reader[i++]);
-            }
-            if (reader[i] != DBNull.Value)
-            {
-                a.LetzteEntnahme = Convert.ToDateTime(reader[i++]);
-            }
+ 
+            a.Meldebestand = Convert.ToInt16(convert(reader[i++]));
+            
+           
+            a.Verpackung = Convert.ToInt16(convert(reader[i++]));
+
+            a.VkPreis = Convert.ToDecimal(convert(reader[i++]));
+           
+ 
+            a.LetzteEntnahme = Convert.ToDateTime(convert(reader[i++]));
+            
            
 
             return a;

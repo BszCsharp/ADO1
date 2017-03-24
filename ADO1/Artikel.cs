@@ -12,7 +12,7 @@ namespace ADO1
         public int ArtikelNr { get; set; }
         public int ArtielGruppe { get; set; }
         public String Bezeichnung { get; set; }
-        public UInt16 Bestand { get; set; }
+        public Int32 Bestand { get; set; }
         public Int16 Meldebestand { get; set; }
         public int Verpackung { get; set; }
         public Decimal VkPreis { get; set; }
